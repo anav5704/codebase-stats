@@ -1,6 +1,6 @@
 {
     "name": "codebase-stats",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "CLI tool for quickly getting simple statistics from your codebase",
     "author": "Anav Chand",
     "license": "MIT",

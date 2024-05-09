@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readdirSync, statSync } from "fs"
+import { readdirSync, readFileSync, statSync } from "fs"
 import { basename, join } from "path"
 import Table from "cli-table3"
 import figlet from "figlet"
@@ -8,12 +8,13 @@ import figlet from "figlet"
 //---------------------------------- CONST AND VARIABLES ----------------------------------//
 
 const codebaseName = basename(process.cwd())
-const ignorePaths = ["node_modules"]
+const ignorePaths = ["node_modules", "package.json", "package-lock.json"]
 
+let dirCount = 0
 let fileCount = 0
-let directoryCount = 0
+let linesOfCode = 0
 
-const calculateFileFolderCount = (path: string) => {
+const countDirFileLines = (path: string) => {
     const currentPath: string[] = readdirSync(path)
 
     currentPath.forEach((fileOrDirectory) => {
@@ -22,17 +23,19 @@ const calculateFileFolderCount = (path: string) => {
         // TODO: add better  checks
         if (!fileOrDirectory.startsWith(".") && !ignorePaths.includes(fileOrDirectory)) {
             if (statSync(filePath).isDirectory()) {
-                calculateFileFolderCount(filePath)
-                directoryCount++
+                countDirFileLines(filePath)
+                dirCount++
             }
             else {
+                const fileContents = readFileSync(filePath, "utf8").toString()
+                linesOfCode += fileContents.split('\n').length
                 fileCount++
             }
         }
     })
 }
 
-calculateFileFolderCount(process.cwd())
+countDirFileLines(process.cwd())
 
 var table = new Table({
     colWidths: [30, 30],
@@ -40,8 +43,9 @@ var table = new Table({
 
 table.push(
     ['Codebase name', codebaseName],
-    ['Directory count', directoryCount],
-    ['File count', fileCount],
+    ['Directories', dirCount],
+    ['Files', fileCount],
+    ['Lines of Code', linesOfCode],
 )
 
 //----------------------------------- PRINT STATISTICS -----------------------------------//
