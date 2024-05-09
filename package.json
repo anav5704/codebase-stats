@@ -11,7 +11,7 @@
     },
     "main": "./dist/index.js",
     "bin": {
-    "codebase-stats": "./dist/index.js"
+        "codebase-stats": "dist/index.js"
     },
     "devDependencies": {
         "@types/figlet": "^1.5.8",
@@ -22,7 +22,7 @@
         "typescript": "^5.4.5"
     },
     "dependencies": {
-        "figlet": "^1.7.0",
-        "gradient-string": "^2.0.2"
+        "cli-table3": "^0.6.4",
+        "figlet": "^1.7.0"
     }
 }
