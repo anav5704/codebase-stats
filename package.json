@@ -1,0 +1,28 @@
+{
+    "name": "codebase-stats",
+    "version": "0.0.0",
+    "description": "CLI tool for quickly getting simple statistics from your codebase",
+    "author": "Anav Chand",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsup",
+        "start": "npx ts-node ./src/index.ts",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "main": "./dist/index.js",
+    "bin": {
+    "codebase-stats": "./dist/index.js"
+    },
+    "devDependencies": {
+        "@types/figlet": "^1.5.8",
+        "@types/gradient-string": "^1.1.6",
+        "@types/node": "^20.12.10",
+        "ts-node": "^10.9.2",
+        "tsup": "^8.0.2",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "figlet": "^1.7.0",
+        "gradient-string": "^2.0.2"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "target": "ESNext",
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "moduleDetection": "force",
+        "isolatedModules": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "module": "commonJs",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "declaration": true,
+    },
+    "include": [
+        "src/"
+    ],
+    "files": [
+        "src/index.ts"
+    ]
+}
