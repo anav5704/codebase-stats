@@ -26,7 +26,7 @@ const countDirFileLines = (path: string) => {
                 countDirFileLines(filePath)
                 dirCount++
             }
-            else {
+            else if (statSync(filePath).isFile()) {
                 const fileContents = readFileSync(filePath, "utf8").toString()
                 linesOfCode += fileContents.split('\n').length
                 fileCount++
