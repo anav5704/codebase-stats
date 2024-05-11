@@ -1,6 +1,6 @@
 # Codebase Stats 📊
 
-![codebase-stats](https://github.com/anav5704/codebase-stasts/blob/main/docs/codebase-stats.png)
+![codebase-stats](https://github.com/anav5704/codebase-stats/blob/main/docs/codebase-stats.png)
 
 This is a simple cli tool that counts the number of directories, files and lines that code your codebase consists of using a recursive function. All `dot files / directories`, `images` and the `node_modules` are ignored.
 
@@ -31,4 +31,6 @@ npx codebase-stats
 
 ## Learning Resources
 
--
+- [Node JS docs](https://nodejs.org/en)
+- [TypeScript docs](https://www.typescriptlang.org)
+- [Tsup docs](https://tsup.egoist.dev)
