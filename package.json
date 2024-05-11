@@ -1,13 +1,13 @@
 {
     "name": "codebase-stats",
-    "version": "0.1.1",
+    "version": "1.0.1",
     "description": "CLI tool for quickly getting simple statistics from your codebase",
     "author": "Anav Chand",
     "license": "MIT",
     "scripts": {
         "build": "tsup",
         "start": "npx ts-node ./src/index.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -16,7 +16,9 @@
     "keywords": [
         "codebase",
         "statistics",
-        "lines of code"
+        "lines of code",
+        "file count",
+        "directory count"
     ],
     "main": "./dist/index.js",
     "bin": {
