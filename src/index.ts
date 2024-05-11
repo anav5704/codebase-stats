@@ -2,28 +2,27 @@
 
 import { readdirSync, readFileSync, statSync } from "fs"
 import { basename, join } from "path"
+import { isValid } from "./is-valid"
 import Table from "cli-table3"
 import figlet from "figlet"
 
 //---------------------------------- CONST AND VARIABLES ----------------------------------//
 
 const codebaseName = basename(process.cwd())
-const ignorePaths = ["node_modules", "package.json", "package-lock.json"]
 
 let dirCount = 0
 let fileCount = 0
 let linesOfCode = 0
 
-const countDirFileLines = (path: string) => {
+const countStats = (path: string) => {
     const currentPath: string[] = readdirSync(path)
 
     currentPath.forEach((fileOrDirectory) => {
         const filePath = join(path, fileOrDirectory)
 
-        // TODO: add better  checks
-        if (!fileOrDirectory.startsWith(".") && !ignorePaths.includes(fileOrDirectory)) {
+        if (isValid(fileOrDirectory)) {
             if (statSync(filePath).isDirectory()) {
-                countDirFileLines(filePath)
+                countStats(filePath)
                 dirCount++
             }
             else if (statSync(filePath).isFile()) {
@@ -35,17 +34,17 @@ const countDirFileLines = (path: string) => {
     })
 }
 
-countDirFileLines(process.cwd())
+countStats(process.cwd())
 
 var table = new Table({
     colWidths: [30, 30],
 })
 
 table.push(
-    ['Codebase name', codebaseName],
-    ['Directories', dirCount],
-    ['Files', fileCount],
+    ['Name', codebaseName],
     ['Lines of Code', linesOfCode],
+    ['Files', fileCount],
+    ['Directories', dirCount],
 )
 
 //----------------------------------- PRINT STATISTICS -----------------------------------//
